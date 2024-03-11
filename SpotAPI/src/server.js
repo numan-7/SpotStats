@@ -21,8 +21,8 @@ setupPassport();
 app.use(passport.initialize());
 app.use(passport.session());
 
-app.use('/api', authRoutes);
-app.use('/', apiRoutes);
+app.use('/api', apiRoutes);
+app.use('/', authRoutes);
 
 const PORT = process.env.PORT || 8888;
 app.listen(PORT, () => {
