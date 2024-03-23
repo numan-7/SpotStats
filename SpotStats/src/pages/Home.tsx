@@ -2,8 +2,10 @@ import { useEffect, useState } from "react";
 import axios from 'axios'
 import Loading from "../components/Loading/Loading";
 import NavBar from "../components/NavBar/NavBar";
-import { UserInfo as userInfoInterface } from "../interfaces/UserInfo.interface";
+import { UserInfo as userInfoInterface } from "../interfaces/SpotifyResponses.interface";
 import { useNavigate } from "react-router-dom";
+import UserInfo from "../components/UserInfo/UserInfo";
+import TopList from "../components/TopList/TopList";
 
 const Home = (): JSX.Element => {
   const navigate = useNavigate();
@@ -11,7 +13,7 @@ const Home = (): JSX.Element => {
   const [userInfo, setUserInfo] = useState<userInfoInterface | null>(null);
 
   useEffect(() => {
-    axios.get('http://localhost:8888/api/user-info', { withCredentials: true })
+    axios.get('/api/user-info', { withCredentials: true })
       .then((res) => {
         setUserInfo(res.data);
         setIsLoading(false);
@@ -40,7 +42,13 @@ const Home = (): JSX.Element => {
       <NavBar 
         userName = {userInfo?.display_name}
       />
-      <div className="flex flex-row justify-center items-center w-full bg-background-500 text-white-500">
+      <div className="flex flex-col gap-2 p-4 justify-start w-full bg-background-500 text-white-500">
+        <UserInfo
+          userName={userInfo?.display_name}
+          userPfp={userInfo?.images[1].url}
+          followers={userInfo?.followers.total}
+        />
+        <TopList />
       </div>
     </div>
 

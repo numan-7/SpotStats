@@ -7,8 +7,9 @@ router.get('/auth/spotify', passport.authenticate('spotify', {
   scope: [
     'user-read-email', 
     'user-read-private',
+    'user-top-read',
     'playlist-read-private',
-    'playlist-read-collaborative'
+    'playlist-read-collaborative',
   ], 
   showDialog: true 
 }));

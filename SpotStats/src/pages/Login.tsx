@@ -4,7 +4,7 @@ import { UserCircleIcon } from '@heroicons/react/24/outline';
 const Login = (): JSX.Element => {
 
   const handleLogin = () => {
-    window.location.href = 'http://localhost:8888/auth/spotify';
+    window.location.href = '/auth/spotify';
   }
 
   return (

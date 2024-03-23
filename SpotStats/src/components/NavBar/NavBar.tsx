@@ -7,9 +7,9 @@ interface HeaderProps {
 }
 
 const handleLogout = () => {
-  axios.get('http://localhost:8888/api/logout', { withCredentials: true })
+  axios.get('/api/logout', { withCredentials: true })
   .then(() => {
-    window.location.href = 'http://localhost:5173/'
+    window.location.href = '/'
   })
 }
 
